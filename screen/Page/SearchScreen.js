@@ -10,6 +10,7 @@ import FooterCart from './Helper/FooterCart';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Octicons, Fontisto, Ionicons } from '@expo/vector-icons';
+import BackNavigator from './Helper/BackNavigator';
 
 export default function SearchScreen({navigation,route}) {
     const [categorey, setcategorey] = useState(route.params.url?route.params.url:"All" )
@@ -57,22 +58,7 @@ export default function SearchScreen({navigation,route}) {
             }}
             ListHeaderComponent={
                 <>                    
-                <View style={{
-                    flexDirection:'row',
-                    justifyContent:'center',
-                    alignItems:'center',
-                    marginTop:20,
-                    marginBottom:5,
-                    marginHorizontal:10                    
-                    }}>
-                                            
-                    <View>
-                        <Text style={{fontWeight:'bold',textTransform:'uppercase',fontSize:18}}>
-                            Search
-                        </Text>
-                    </View>
-                    
-                </View>
+                <BackNavigator label={"Search"}  />
                 {/* search */}
                 <View style={{
                     marginVertical:10,

@@ -35,6 +35,16 @@ const AuthProvider = ({children}) => {
       setLoading(false);
     }
   }
+  const signOut = async () => {
+    await AsyncStorage.removeItem('@AuthData');
+  };
+  const signIn = async (_authData) => {
+    //...call service and setAuthData
+
+    //Persist the data in the Async Storage
+    //to be recovered in the next user session.
+    AsyncStorage.setItem('@AuthData', JSON.stringify(_authData));
+  };
 
   
 
@@ -43,7 +53,7 @@ const AuthProvider = ({children}) => {
   return (
     //This component will be used to encapsulate the whole App,
     //so all components will have access to the Context
-    <AuthContext.Provider value={{authData}}>
+    <AuthContext.Provider value={{authData,signOut,signIn}}>
       {children}
     </AuthContext.Provider>
   );

@@ -7,6 +7,7 @@ import CartFooter from './Helper/CartFooter';
 import { useCart } from '../../Context/cartContext';
 import { useAuth } from '../../Context/authContext';
 import { useIsFocused } from '@react-navigation/native';
+import BackNavigator from './Helper/BackNavigator';
 export default function Checkout({navigation}) {
   const {cartItems,userAddress,setCartItems}=useCart()
   const {authData}=useAuth()
@@ -42,7 +43,7 @@ export default function Checkout({navigation}) {
       address:userAddress
     }
     setCartItems([])
-    navigation.navigate('home')
+    navigation.navigate('orderSuccess')
     setisOrdering(false)
     
   }
@@ -58,18 +59,9 @@ export default function Checkout({navigation}) {
   
   return (
     <StyledContainer>
-        <HeaderContainer>                
-            <TouchableOpacity onPress={()=>navigation.pop()} >
-                        <Ionicons name='arrow-back-circle' size={34 }  />
-            </TouchableOpacity>             
-            <View  style={{width:SIZES.width-80,elevation:1,backgroundColor:'#fff',borderRadius:25,paddingVertical:10,flexDirection:'row',justifyContent:'center',alignItems:'center'}}>
-                
-                <View style={{marginHorizontal:4}}>
-                    <Text  numberOfLines={1} style={{fontWeight:'bold'}}>Checkout </Text>                        
-                </View>                            
-            </View>                        
-        </HeaderContainer> 
-        <ScrollView>
+      <BackNavigator label={"Checkout"} />
+        
+      
           
         <Showmore label={"Add"} onPress={()=>navigation.navigate('home')} heading="Summary " />
         <View style={{padding:10,backgroundColor:Colors.white,elevation:3,borderRadius:5}}>
@@ -152,7 +144,6 @@ export default function Checkout({navigation}) {
           <Ionicons name='information-circle' size={25} color={Colors.brand} />
           <Text style={{fontWeight:'bold', margin:4}}>Order  will be delivery within in 2-3 days </Text>
         </View>
-        </ScrollView>
         <View style={{position:'absolute',bottom:0,backgroundColor:'#fff',right:2,left:2,borderTopWidth:2,borderTopRightRadius:20,borderTopLeftRadius:20,elevation:2,borderColor:Colors.lightOrange2}}>
           
           <CartFooter />

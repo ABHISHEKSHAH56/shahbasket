@@ -41,11 +41,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 import { AppLogIn } from '../../API/Index';
+import { useAuth } from '../../Context/authContext';
 
 const Login = ({ navigation }) => {
   const [hidePassword, setHidePassword] = useState(true);
   const [message, setMessage] = useState();
   const [messageType, setMessageType] = useState();
+  const {signIn }=useAuth()
  
  
   const handleLogin = async(credentials, setSubmitting) => {
@@ -53,10 +55,9 @@ const Login = ({ navigation }) => {
     await AppLogIn(credentials)
       .then((response) => {
         AsyncStorage.setItem("accessToken", response.data.accessToken)
-        AsyncStorage.setItem("@AuthData",JSON.stringify(response.data))
+        signIn(response.data)
         handleMessage("User login Successfully ","SUCCESS")
         setSubmitting(false)
-        navigation.navigate("Signup");
       })
       .catch((error) => {
         setSubmitting(false);

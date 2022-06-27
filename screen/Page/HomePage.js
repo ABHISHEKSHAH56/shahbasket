@@ -23,6 +23,7 @@ export default function HomePage() {
       })
     }
     fetchproduct();
+    console.log(Product);
     
   }, []);
   
@@ -35,7 +36,9 @@ export default function HomePage() {
           keyExtractor={(item, index) => index + 5}
           showsVerticalScrollIndicator={false}
           ListEmptyComponent={
-            <ActivityIndicator size={"large"} color={Colors.primary} />
+            <View style={{minHeight:200}}>              
+            <ActivityIndicator size={"small"} color={Colors.brand} />
+            </View>
           }
           renderItem={({ item }) =>{
             return <ProductCard2 data={item} key={item._id} />
@@ -56,6 +59,11 @@ export default function HomePage() {
             <FlatList 
               data={Product}
               keyExtractor={(item)=>item._id}
+              ListEmptyComponent={
+                <View style={{minHeight:200}}>              
+                <ActivityIndicator size={"large"} color={Colors.brand} />
+                </View>
+              }
               renderItem={({ item }) =>{
                 return(
                     <Card01 data={item} key={item._id} />

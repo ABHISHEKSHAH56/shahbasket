@@ -13,6 +13,16 @@ export const ProductsWrapper=styled.View`
         shadow-radius: 4px;
         shadow-opacity: 0.1;
 `;
+export const ProductsWrapperCol=styled.View`
+        elevation: 4;
+        border-radius: 10px;
+        background-color: ${Colors.primary};
+        margin-horizontal: 5px;
+        shadow-color: ${Colors.gray}; 
+        margin-bottom:20px;
+        shadow-radius: 4px;
+        shadow-opacity: 0.1;
+`;
 
 //card01
 export const PercentageWrapper=styled.View`

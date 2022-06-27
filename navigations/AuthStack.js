@@ -4,6 +4,7 @@ import { Colors } from "../components/style";
 import Login from "../screen/Auth/Login";
 import Signup from "../screen/Auth/Signup";
 import PhoneLogin from "../screen/Auth/Phone";
+import Routes from "./routes";
 
 const Stack =createStackNavigator();
 

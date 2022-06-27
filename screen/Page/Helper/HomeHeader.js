@@ -4,8 +4,10 @@ import useLocationsDetect from '../../../hooks/useLocationsDetect';
 import { Octicons, Fontisto, Ionicons } from '@expo/vector-icons';
 import { Colors, InfoText } from '../../../components/style';
 import { useCart } from '../../../Context/cartContext';
+import { useNavigation } from '@react-navigation/native';
 
 export default function HomeHeader() {
+  const  navigation=useNavigation()
   const [isdilveryAddress]=useLocationsDetect();
   const {userAddress}=useCart()
   return (
@@ -14,7 +16,7 @@ export default function HomeHeader() {
           <Octicons style={{paddingHorizontal:5}} name={isdilveryAddress ===true? "location" :"alert"} size={20} color={isdilveryAddress ===true? Colors.brand :Colors.red}  />
           <InfoText numberOfLines={1} style={{fontWeight:'bold'}} >{userAddress?.StreetAddress===undefined ? "Loading..." : userAddress?.StreetAddress }</InfoText>
         </View>
-        <TouchableOpacity >
+        <TouchableOpacity onPress={()=>navigation.navigate('setting')} >
           <Image source={require('../../../assets/user.png')} style={{
             height:50,
             width:50,

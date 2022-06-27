@@ -9,7 +9,7 @@ import { Colors } from '../components/style';
 
 export default function Routes() {
     const [appReady, setAppReady] = useState(false);
-    const { authData,  } = useAuth();
+    const { authData  } = useAuth();
     useEffect(() => {
         setTimeout(() => {
             setAppReady(true)
@@ -30,7 +30,9 @@ export default function Routes() {
     }
     return (
         <NavigationContainer>
-            <AppStack /> 
+            {
+                authData? <AppStack />:<AuthStack />
+            } 
         </NavigationContainer>
     );
 };

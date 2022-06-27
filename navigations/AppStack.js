@@ -9,6 +9,11 @@ import CartPage from "../screen/Page/CartPage";
 import AddressPage from "../screen/Page/AddressPage";
 import Checkout from "../screen/Page/Checkout";
 import PhoneLogin from "../screen/Auth/Phone";
+import OrderSuccess from "../screen/Page/OrderConfim";
+import TrackOrder from "../screen/Page/TrackOrder";
+import SettingPage from "../screen/Page/SettingPage";
+import OrdersPage from "../screen/Page/OrdersPage";
+import OrdersListPage from "../screen/Page/OrdersPage";
 
 const Stack =createStackNavigator();
 
@@ -16,25 +21,24 @@ const AppStack=()=>{
     return (
             <Stack.Navigator 
                 screenOptions={{
-                    headerStyle:{
-                        backgroundColor:'transparent'
-                    },
-                    headerTintColor: Colors.tertiary,
-                    headerTransparent:true,
-                    headerTitle:'',
-                    headerLeftContainerStyle:{
-                        paddingLeft:10 
-                    }
+                    headerShown:false
+                    
                 }}
+                
+
                 initialRouteName="home"
                 >
                 
                 <Stack.Screen name="home" component={HomePage} />
                 <Stack.Screen name="search" component={SearchScreen}/>
-                <Stack.Screen options={{headerLeft: (props) => null }}name="cart" component={CartPage} />
-                <Stack.Screen name="address" options={{headerLeft: (props) => null }} component={AddressPage} />
-                <Stack.Screen name="checkout" options={{headerLeft: (props) => null }} component={Checkout} />                
-                <Stack.Screen name="phoneLogin" options={{headerLeft: (props) => null }} component={PhoneLogin} />
+                <Stack.Screen name="cart" component={CartPage} />
+                <Stack.Screen name="address"  component={AddressPage} />
+                <Stack.Screen name="checkout"  component={Checkout} />                
+                <Stack.Screen name="phoneLogin"  component={PhoneLogin} />                               
+                <Stack.Screen name="orderSuccess"  component={OrderSuccess} />                                              
+                <Stack.Screen name="trackOrder"  component={TrackOrder} />
+                <Stack.Screen name="setting"  component={SettingPage} />
+                <Stack.Screen name="orderList"  component={OrdersListPage} />
             </Stack.Navigator>
     )
 }

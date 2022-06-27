@@ -97,6 +97,14 @@ export const Avatar = styled.Image`
   margin-bottom: 10px;
   margin-top: 10px;
 `;
+export const AvatarSmall = styled.Image`
+  width: 40px;
+  height: 40px;
+  border-radius: 40px;
+  border-width: 1px;
+  border-color: ${secondary};
+  margin:4px;
+`;
 
 export const WelcomeImage = styled.Image`
   height: 50%;
@@ -120,6 +128,7 @@ export const SubTitle = styled.Text`
   font-size: 18px;
   margin-bottom: 20px;
   letter-spacing: 1px;
+  text-align:center;  
   font-weight: bold;
   color: ${tertiary};
   ${(props) =>
